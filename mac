@@ -148,6 +148,13 @@ brew "postgres", restart_service: :changed
 brew "redis", restart_service: :changed
 EOF
 
+fancy_echo "Configuring dotfiles..."
+if [ ! -d "$HOME/dotfiles" ]; then
+  git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+  # mac script already installed rcm
+  env RCRC=$HOME/dotfiles/rcrc rcup
+fi
+
 fancy_echo "Update heroku binary ..."
 brew unlink heroku
 brew link --force heroku
