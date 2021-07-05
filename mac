@@ -89,6 +89,12 @@ gem_install_or_update() {
   fi
 }
 
+# If homebrew fails to install because the below error do the following manually and run this script again:
+# error: Not a valid ref: refs/remotes/origin/master
+# fatal: ambiguous argument 'refs/remotes/origin/master': unknown revision or path not in the working tree.
+# https://github.com/Homebrew/brew/issues/10368#issuecomment-763342387
+# rm -fr $(brew --repo homebrew/core)  # because you can't `brew untap homebrew/core`
+# brew tap homebrew/core
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
     /bin/bash -c \
