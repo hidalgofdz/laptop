@@ -135,7 +135,7 @@ brew "universal-ctags"
 brew "git"
 brew "openssl"
 brew "rcm"
-brew "reattach-to-user-namespace"
+#brew "reattach-to-user-namespace"
 brew "the_silver_searcher"
 brew "tmux"
 brew "vim"
@@ -156,19 +156,19 @@ brew "imagemagick"
 brew "poppler"
 
 # Programming language prerequisites and package managers
-brew "libyaml" # should come after openssl
+# brew "libyaml" # should come after openssl
 brew "coreutils"
 brew "yarn"
-cask "gpg-suite-no-mail"
+# cask "gpg-suite-no-mail"
 
 # Databases
-brew "postgresql@14", restart_service: :changed
-brew "redis", restart_service: :changed
+#brew "postgresql@14", restart_service: :changed
+#brew "redis", restart_service: :changed
 EOF
 
 fancy_echo "Configuring dotfiles..."
 if [ ! -d "$HOME/dotfiles" ]; then
-  git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+  git clone https://github.com/thoughtbot/dotfiles.git ~/dotfiles
   # mac script already installed rcm
   env RCRC=$HOME/dotfiles/rcrc rcup
 fi
@@ -199,6 +199,8 @@ add_or_update_asdf_plugin() {
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 add_or_update_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 add_or_update_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
+add_or_update_asdf_plugin "python" "https://github.com/asdf-community/asdf-python.git"
+
 
 install_asdf_language() {
   local language="$1"
