@@ -1,3 +1,28 @@
+# IMPORTANT LOCAL CHANGES
+To avoid the warning when starting a terminal that look like this: 
+
+```sh
+[WARNING]: Console output during zsh initialization detected.
+
+When using Powerlevel10k with instant prompt, console output during zsh
+initialization may indicate issues.
+
+```
+
+Do the following: since powershell10k is being used make sure that the following code goes below the _load_settings fn on .zshrc
+
+
+```sh
+_load_settings "$HOME/.zsh/configs"
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+```
+
 Laptop
 ======
 
