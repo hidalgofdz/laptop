@@ -1,7 +1,6 @@
 fancy_echo "Install powerlevel10k terminal theme..."
 brew bundle --file=- <<EOF
-tap "romkatv/powerlevel10k"
-brew "romkatv/powerlevel10k/powerlevel10k"
+brew "powerlevel10k"
 EOF
 
-append_to_zshrc "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme"
+append_to_zshrc "source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
